@@ -11,6 +11,7 @@ public class Medicine {
     private String expiryDate;
     private String status;
 
+    // Constructor for new medicines (auto-generates status)
     public Medicine(String name, String batchNumber, int quantity, int minStock, String supplier, String expiryDate) {
         this.name = name;
         this.batchNumber = batchNumber;
@@ -21,6 +22,7 @@ public class Medicine {
         this.status = calculateStatus();
     }
 
+    // Constructor for medicines from database (includes ID and status)
     public Medicine(int id, String name, String batchNumber, int quantity, int minStock, String supplier, String expiryDate, String status) {
         this.id = id;
         this.name = name;
@@ -32,6 +34,7 @@ public class Medicine {
         this.status = status;
     }
 
+    // Calculate expiry status based on current date
     private String calculateStatus() {
         try {
             LocalDate expiry = LocalDate.parse(expiryDate);
@@ -59,4 +62,11 @@ public class Medicine {
     public String getSupplier() { return supplier; }
     public String getExpiryDate() { return expiryDate; }
     public String getStatus() { return status; }
+
+    // toString for debugging
+    @Override
+    public String toString() {
+        return String.format("Medicine{id=%d, name='%s', batch='%s', qty=%d, min=%d, supplier='%s', expiry=%s, status=%s}",
+                id, name, batchNumber, quantity, minStock, supplier, expiryDate, status);
+    }
 }

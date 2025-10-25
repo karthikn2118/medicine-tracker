@@ -1,14 +1,19 @@
 @echo off
+echo Cleaning old files...
+del src\*.class 2>nul
+
 echo Compiling Medicine Tracker...
-javac -cp "lib/mysql-connector-java-8.0.33.jar" src/*.java
+javac src/*.java
 
 if %errorlevel% equ 0 (
+    echo ✅ Compilation successful!
     echo.
-    echo Running Program...
+    echo Starting Medicine Tracker...
     echo.
-    java -cp "src;lib/mysql-connector-java-8.0.33.jar" MedicineTracker
+    java -cp src MedicineTracker
 ) else (
     echo.
-    echo Compilation failed! Check errors above.
-    pause
+    echo ❌ Compilation failed! Check errors above.
 )
+
+pause
