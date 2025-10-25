@@ -1,0 +1,8 @@
+C:/
+└── medicine-tracker/
+    ├── src/
+    │   ├── Medicine.java
+    │   ├── Database.java
+    │   └── MedicineTracker.java
+    └── lib/
+        └── (mysql-connector jar will go here)
